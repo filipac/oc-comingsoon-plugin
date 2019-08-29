@@ -1,0 +1,46 @@
+url = "/"
+layout = "main"
+==
+function onInit() {
+    $this['text'] = \Filipac\Comingsoon\Classes\Content::getIntro();
+
+    //\Filipac\Comingsoon\Classes\Content::setIntro(str_replace('2020', '2019', $this['text']));
+
+    //dd(\Filipac\Comingsoon\Classes\ThemeYaml::whereFileName('addresses')->first());
+
+    //dd(\Filipac\Comingsoon\Classes\Content::getAddresses());
+}
+function onSubmit() {
+    $data = request()->all();
+    $rules = ['email' => 'required'];
+    $validator = Validator::make($data, $rules);
+    if($validator->fails()) {
+        throw new ValidationException($validator);
+    }
+    $addresses = \Filipac\Comingsoon\Models\Address::whereFileName('addresses')->first();
+    $addresses->add(request()->email);
+    $addresses->save();
+    return [
+        '#form' => $this->renderPartial('submitted')
+    ];
+}
+==
+<div class="container h-100">
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <div class="masthead-content text-white py-5 py-md-0">
+                {{ text|raw }}
+                <form id="form">
+                    <div class="input-group input-group-newsletter">
+                        <input type="email" class="form-control" placeholder="Enter email..."
+                               name="email"
+                               aria-label="Enter email..." aria-describedby="basic-addon">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" type="button" data-request="onSubmit">Notify Me!</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

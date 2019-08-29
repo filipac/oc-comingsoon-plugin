@@ -1,0 +1,6 @@
+plugin:
+    name: 'filipac.comingsoon::lang.plugin.name'
+    description: 'filipac.comingsoon::lang.plugin.description'
+    author: Filipac
+    icon: oc-icon-connectdevelop
+    homepage: ''

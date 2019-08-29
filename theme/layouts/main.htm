@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% partial 'head' %}
+
+<body>
+
+<div class="overlay"></div>
+<video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="{{ 'assets/mp4/bg.mp4'|theme }}" type="video/mp4">
+</video>
+
+<div class="masthead">
+    <div class="masthead-bg"></div>
+    {% page %}
+</div>
+
+<div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+        <li class="list-unstyled-item">
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li class="list-unstyled-item">
+            <a href="#">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+        <li class="list-unstyled-item">
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="{{ 'assets/vendor/jquery/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js'|theme }}"></script>
+
+{% scripts %}
+{% framework extras %}
+
+<!-- Custom scripts for this template -->
+<script src="{{ 'assets/js/coming-soon.min.js'|theme }}"></script>
+
+</body>
+
+</html>
